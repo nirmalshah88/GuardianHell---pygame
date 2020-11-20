@@ -1,6 +1,6 @@
 import pygame, os, sys, time
 
-from Guardian import Guardian
+from guardian import Guardian
 from sources import guardianImagesPaths, soundPaths, scenesPaths
 from Start import StartScreen
 from Level1 import Level1
@@ -18,13 +18,16 @@ def main():
      pygame.mixer.init()
      clock = pygame.time.Clock()
      pygame.key.set_repeat(30)
+     
      #Window configuration
      resolution = width, height = 800, 700
      window = pygame.display.set_mode(resolution)
      pygame.display.set_caption("Guardian Hell")
      pygame.display.set_icon(pygame.image.load('./src/images/ico.png'))
+     
      #Instantiation of player
      player = Guardian(guardianImagesPaths, soundPaths, [400, 200], 3, 0)     
+     
      ### Scenes statement
      scene0 = StartScreen(width, height, scenesPaths["startScreen"], "Press any key to start", soundPaths['start'])
      level1 = Level1(width, height, player, scenesPaths["level1"])
@@ -34,6 +37,7 @@ def main():
      level5 = Level5(width, height, player, scenesPaths["level5"])
      level6 = Level6(width, height, player, scenesPaths["level6"])
      gameover = GameOver(player)
+     
      #The scenes are added to an array that will be traversed as the level progresses 
      scenes = []
      scenes.append(scene0)
@@ -44,11 +48,14 @@ def main():
      scenes.append(level5)
      scenes.append(level6)
      scenes.append(gameover)
+     
      #sceneNumber will be the index of the scene array
      sceneNumber = -1
      runNextScene = True
      quit = False
+     
      pygame.mixer.Sound(soundPaths['music']).play(-1)
+     
      while(not quit):
           clock.tick(60)  
           if(runNextScene):

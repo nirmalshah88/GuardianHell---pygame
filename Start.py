@@ -1,5 +1,5 @@
 import pygame, time
-from TextOnScreen import TextOnScreen
+import TextOnScreen
 
 class StartScreen(pygame.sprite.Sprite):
      """
@@ -15,7 +15,7 @@ class StartScreen(pygame.sprite.Sprite):
           """
           pygame.sprite.Sprite.__init__(self)
           self.background = pygame.image.load(background)
-          self.startMessage = TextOnScreen(width/2, height/2 + 150, 45, (255,237,54), 'gothicum', textStart)
+          self.startMessage = TextOnScreen.TextOnScreen(width/2, height/2 + 150, 45, (255,237,54), 'gothicum', textStart)
           self.startSound = pygame.mixer.Sound(soundPath)
 
      def initialize(self, window, *others):

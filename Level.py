@@ -2,7 +2,7 @@ import pygame
 from Enemy import Demon
 from Factory import Factory
 from Line import Line
-from Guardian import Guardian
+from guardian import Guardian
 from TextOnScreen import TextOnScreen
 from threading import Timer
 class Level():
